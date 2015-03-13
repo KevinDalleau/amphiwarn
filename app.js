@@ -1,3 +1,4 @@
+	var lastNotification = 0;
 	var app = angular.module("webAlert", []);
 	var array = new Array();
 	app.controller('MainController', function($scope, $window){
@@ -13,9 +14,31 @@
 		return time.getHours()+":"+time.getMinutes()+":"+time.getSeconds();
 	}
 
+	function avoidTroll(time) {
+		var now = new Date();
+		var then = new Date(time);
+		console.log(now);
+		console.log(then);
+		var troll = now-time<10000 ? true : false;
+		return troll;
+	}
+
 	function notifyAll() {
-		// console.log("Notification");
-		socket.emit('notify', {type:'Notification',date:getTimeMessage(),sender:socket.id});
+		console.log(avoidTroll(lastNotification));
+		if(lastNotification == 0) {
+			socket.emit('notify', {type:'Notification',date:getTimeMessage(),sender:socket.id});
+			lastNotification = new Date();
+		}
+		else {
+			if(!avoidTroll(lastNotification)) {
+				socket.emit('notify', {type:'Notification',date:getTimeMessage(),sender:socket.id});
+				lastNotification = new Date();
+			}
+			else {
+				alert("Troll alert !");
+			}
+		}
+		
 	};
 	window.addEventListener("keydown", checkKeyPressed, false);
 	 
