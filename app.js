@@ -32,10 +32,10 @@ function notify(message) {
         $scope.notifications = array;
     });
 	if(array.length<=4) {
-		array.push(message);
+		array.unshift(message);
 	}
 	else {
-		array[4] = message;
+		array[0] = message;
 	}
   if (!("Notification" in window)) {
     alert("Ce navigateur ne supporte pas les notifications desktop");
