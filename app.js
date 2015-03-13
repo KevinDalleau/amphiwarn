@@ -1,3 +1,13 @@
+var app = angular.module("webAlert", []);
+var array = new Array();
+app.controller('MainController', function($scope, $window){
+
+	$scope.message = "Ok !";
+	$scope.watch = 
+	$scope.notifications = array;
+});
+
+
 function getTimeMessage() {
 	var time = new Date();
 	return time.getHours()+":"+time.getMinutes()+":"+time.getSeconds();
@@ -16,6 +26,17 @@ function checkKeyPressed(e) {
 }
 function notify(message) {
 // Voyons si le navigateur supporte les notifications
+	var appElement = document.querySelector('[ng-app=webAlert]');
+    var $scope = angular.element($('body')).scope();
+    $scope.$apply(function() {
+        $scope.notifications = array;
+    });
+	if(array.length<=4) {
+		array.push(message);
+	}
+	else {
+		array[4] = message;
+	}
   if (!("Notification" in window)) {
     alert("Ce navigateur ne supporte pas les notifications desktop");
   }

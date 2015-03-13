@@ -4,7 +4,8 @@ var server = app.listen(80);
 var io = require('socket.io').listen(server);
 
 	app.use(express.static(__dirname +'/'));
-
+	app.use(express.static(__dirname +'/bower_components/angular/'));
+	
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
