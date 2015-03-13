@@ -28,15 +28,16 @@ function notify(message) {
 // Voyons si le navigateur supporte les notifications
 	var appElement = document.querySelector('[ng-app=webAlert]');
     var $scope = angular.element($('body')).scope();
-    $scope.$apply(function() {
-        $scope.notifications = array;
-    });
+    
 	if(array.length<=4) {
 		array.unshift(message);
 	}
 	else {
 		array[0] = message;
 	}
+	$scope.$apply(function() {
+        $scope.notifications = array;
+    });
   if (!("Notification" in window)) {
     alert("Ce navigateur ne supporte pas les notifications desktop");
   }
