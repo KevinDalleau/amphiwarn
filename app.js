@@ -17,8 +17,6 @@
 	function avoidTroll(time) {
 		var now = new Date();
 		var then = new Date(time);
-		console.log(now);
-		console.log(then);
 		var troll = now-time<10000 ? true : false;
 		return troll;
 	}
@@ -40,6 +38,7 @@
 		}
 		
 	};
+	
 	window.addEventListener("keydown", checkKeyPressed, false);
 	 
 	function checkKeyPressed(e) {
@@ -61,14 +60,14 @@
 		$scope.$apply(function() {
 	        $scope.notifications = array;
 	    });
-	    if(message.sender!=socket.id) { //If it's not the sender
+	    if(message.sender!=socket.id) { //Si ce n'est pas l'émetteur
 	    	if (!("Notification" in window)) {
 	    alert("Ce navigateur ne supporte pas les notifications desktop");
 	  }
 
 	  // Voyons si l'utilisateur est OK pour recevoir des notifications
 	  else if (Notification.permission === "granted") {
-	    // Si c'est ok, créons une notification
+	    
 	    var notification = new Notification(message.date+ " : "+message.message);
 	  }
 
@@ -82,9 +81,4 @@
 	    });
 	  }
 	    }
-	    
-	  
-
-	  // Comme ça, si l'utlisateur a refusé toute notification, et que vous respectez ce choix,
-	  // il n'y a pas besoin de l'ennuyer à nouveau.
 	}

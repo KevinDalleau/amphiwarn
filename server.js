@@ -15,7 +15,7 @@ io.sockets.on('connection', function(socket){
   console.log('a user connected');
   socket.on('notify', function(data) {
 	console.log('Notification sent');
-		io.sockets.emit('notificationbroadcast',{message: 'Notez !', date: data.date, sender: data.sender});
+		io.sockets.emit('notificationbroadcast',{message: 'Une phrase à trous sauvage est apparue !', date: data.date, sender: data.sender});
 });	
 });
 io.on('disconnect', function() {
