@@ -46,7 +46,7 @@
 	  // Voyons si l'utilisateur est OK pour recevoir des notifications
 	  else if (Notification.permission === "granted") {
 	    // Si c'est ok, créons une notification
-	    var notification = new Notification(message.date+ " : "+message.message+' : '+message.sender+" ; "+message.id);
+	    var notification = new Notification(message.date+ " : "+message.message);
 	  }
 
 	  
