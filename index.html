@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="./bower_components/bootswatch-dist/css/bootstrap.css" />
+	<title>Amphi Alert</title>
+</head>
+<body>
+	<div class="alert">
+		<button class="btn btn-primary btn-lg" onclick="notifyAll()">Alerter l'amphi</button>
+	</div>
+	<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script>
+		var socket = io();
+		socket.on('notificationbroadcast', function(data) {
+			notify(data);
+		});
+	</script>
+	<script src="./app.js"></script>
+</body>
+</html>
