@@ -8,13 +8,16 @@
 		<div class="alert">
 			<button class="btn btn-primary btn-lg" onclick="notifyAll()">Alerter l'amphi</button>
 		</div>
+		<div class="info">
+		<span class="counter">Nombre de personnes connectées : {{counterDisplay}}</span>
+		</div>
 		<div class="list-group">
 		<span class="list-group-item" ng-repeat="notification in notifications">
 				<h4 class="list-group-item-heading">{{notification.date}}</h4>
 				<p class="list-group-item-text">{{notification.message}}</p>
 			</span>
 		</div>
-
+		
 		<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
@@ -23,20 +26,16 @@
 		<script src="/socket.io/socket.io.js"></script>
 		<script>
 			var socket = io();
+			socket.on('connectionCounter', function(data) {
+				updateCounter(data);
+			});
 			socket.on('notificationbroadcast', function(data) {
 					notify(data);
 			});
+			socket.on('disconnectionCounter', function(data) {
+				updateCounter(data);
+			});
 		</script>
-		<script>
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-	  ga('create', 'UA-60748900-1', 'auto');
-	  ga('send', 'pageview');
-
-	</script>
 		
 	</body>
 	</html>

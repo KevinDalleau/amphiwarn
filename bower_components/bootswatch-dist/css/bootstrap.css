@@ -4901,8 +4901,8 @@ a.thumbnail.active {
   color: #333333;
 }
 .alert {
-  padding: 15px;
-  margin-bottom: 20px;
+  padding: 10px;
+  margin-bottom: 5px;
   border: 1px solid transparent;
   border-radius: 4px;
 }
@@ -6568,15 +6568,29 @@ button.close {
   background-color: #fff;
   color: #772953;
 }
-#alert {
-  width: 100%;
-  display:table-cell;
-  vertical-align: middle;
-}
-.btn-lg {
+
+.btn-lg{
   display: block;
   margin-left: auto;
   margin-right: auto;
   margin-top: auto;
   margin-bottom: auto;
+}
+
+.info {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  width: 100%;
+  text-align: center;
+}
+.counter{
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+.counter-container {
+  width: 100%;
+  display:table-cell;
+  vertical-align: middle;
 }
