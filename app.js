@@ -3,8 +3,7 @@
 	var array = new Array();
 	app.controller('MainController', function($scope, $window){
 
-		$scope.message = "Ok !";
-		$scope.watch = 
+		$scope.message = "Ok !"; 
 		$scope.notifications = array;
 	});
 
@@ -17,7 +16,7 @@
 	function avoidTroll(time) {
 		var now = new Date();
 		var then = new Date(time);
-		var troll = now-time<10000 ? true : false;
+		var troll = now-time<10000;
 		return troll;
 	}
 
@@ -37,7 +36,7 @@
 			}
 		}
 		
-	};
+	}
 	
 	window.addEventListener("keydown", checkKeyPressed, false);
 	 
@@ -45,6 +44,15 @@
 	    if (e.keyCode == "13" || e.keycode == "18") {
 	        notifyAll();
 	    }
+	}
+
+	function updateCounter(counter) {
+		var appElement = document.querySelector('[ng-app=webAlert]');
+	    var $scope = angular.element($('body')).scope();
+	    console.log(counter);
+	    $scope.$apply(function() {
+	    	$scope.counterDisplay = counter;
+	    });
 	}
 	function notify(message) {
 	// Voyons si le navigateur supporte les notifications
