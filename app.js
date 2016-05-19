@@ -1,3 +1,4 @@
+	var useless = null;
 	var lastNotification = 0;
 	var app = angular.module("webAlert", []);
 	var array = new Array();
